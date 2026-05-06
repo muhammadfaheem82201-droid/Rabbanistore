@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl" id="htmlRoot">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rabbani Store — ربانی اسٹور</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--p:#0a3d2e;--p2:#145a3c;--a:#f5a623;--a2:#e8941a;--g:#25d366;--r:#e74c3c;--l:#f5f0e8;--b:#ddd5c8;--tx:#1a1a1a;--mu:#777;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body.ur{font-family:'Noto Nastaliq Urdu',serif;direction:rtl;}
+body.en{font-family:'Poppins',sans-serif;direction:ltr;}
+body{background:var(--l);color:var(--tx);}
+.lt{display:flex;background:rgba(255,255,255,0.15);border-radius:50px;overflow:hidden;border:1px solid rgba(255,255,255,0.3);}
+.lb{padding:6px 13px;border:none;background:transparent;color:rgba(255,255,255,0.7);cursor:pointer;font-size:0.82rem;font-weight:700;transition:all 0.2s;font-family:inherit;}
+.lb.on{background:var(--a);color:var(--p);}
+header{background:linear-gradient(135deg,var(--p),var(--p2));color:#fff;position:sticky;top:0;z-index:100;box-shadow:0 4px 20px rgba(0,0,0,.3);}
+.ib{background:var(--a);color:var(--p);padding:5px 20px;font-size:.8rem;font-weight:600;display:flex;justify-content:center;gap:18px;flex-wrap:wrap;}
+.ib span{display:flex;align-items:center;gap:4px;}
+.ht{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;gap:10px;}
+.logo{font-size:1.4rem;font-weight:700;color:var(--a);}
+.ls{font-size:.7rem;color:rgba(255,255,255,.5);}
+.sw{flex:1;max-width:440px;display:flex;background:rgba(255,255,255,.12);border-radius:50px;overflow:hidden;border:1px solid rgba(255,255,255,.25);}
+.sw input{flex:1;padding:9px 16px;background:transparent;border:none;outline:none;color:#fff;font-family:inherit;font-size:.88rem;}
+body.ur .sw input{direction:rtl;}body.en .sw input{direction:ltr;}
+.sw input::placeholder{color:rgba(255,255,255,.45);}
+.sw button{background:var(--a);border:none;padding:9px 14px;color:#fff;cursor:pointer;font-size:1rem;}
+.hb{display:flex;gap:8px;align-items:center;}
+.bc{background:var(--a);color:var(--p);border:none;padding:8px 14px;border-radius:50px;cursor:pointer;font-family:inherit;font-size:.85rem;font-weight:700;position:relative;transition:all .2s;white-space:nowrap;}
+.bc:hover{background:var(--a2);transform:scale(1.04);}
+.cc{position:absolute;top:-6px;background:var(--r);color:#fff;border-radius:50%;width:20px;height:20px;font-size:.68rem;display:flex;align-items:center;justify-content:center;font-weight:700;}
+body.ur .cc{left:-6px;}body.en .cc{right:-6px;}
+.ba{background:transparent;color:rgba(255,255,255,.75);border:1px solid rgba(255,255,255,.3);padding:8px 12px;border-radius:50px;cursor:pointer;font-family:inherit;font-size:.8rem;transition:all .2s;white-space:nowrap;}
+.ba:hover{background:rgba(255,255,255,.1);color:#fff;}
+.cb{background:#fff;border-bottom:2px solid var(--b);padding:0 20px;}
+.ci{max-width:1200px;margin:0 auto;display:flex;gap:6px;overflow-x:auto;padding:10px 0;scrollbar-width:none;}
+.ci::-webkit-scrollbar{display:none;}
+.cb2{padding:6px 16px;border-radius:50px;border:2px solid var(--b);background:#fff;cursor:pointer;font-family:inherit;font-size:.82rem;white-space:nowrap;transition:all .2s;color:var(--tx);}
+.cb2:hover,.cb2.on{background:var(--p);color:#fff;border-color:var(--p);}
+main{max-width:1200px;margin:0 auto;padding:20px;}
+.hero{background:linear-gradient(135deg,var(--p),#1a6645);border-radius:18px;padding:36px 32px;margin-bottom:22px;color:#fff;position:relative;overflow:hidden;}
+.hero::after{content:'🛒';position:absolute;font-size:7rem;opacity:.1;top:50%;transform:translateY(-50%);}
+body.ur .hero::after{left:26px;}body.en .hero::after{right:26px;}
+.hero h1{font-size:1.6rem;color:var(--a);margin-bottom:6px;}
+.hero p{color:rgba(255,255,255,.7);margin-bottom:14px;font-size:.9rem;}
+.hbs{display:flex;gap:8px;flex-wrap:wrap;}
+.hb2{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);padding:4px 12px;border-radius:50px;font-size:.76rem;}
+.st{font-size:1.15rem;font-weight:700;margin-bottom:14px;color:var(--p);display:flex;align-items:center;gap:8px;}
+.st::after{content:'';flex:1;height:2px;background:linear-gradient(to left,transparent,var(--b));}
+.pg{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin-bottom:28px;}
+.pc{background:#fff;border-radius:16px;overflow:hidden;border:1px solid var(--b);transition:all .3s;position:relative;animation:fu .4s ease;}
+@keyframes fu{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.pc:hover{transform:translateY(-6px);box-shadow:0 16px 36px rgba(0,0,0,.12);}
+.pi2{width:100%;height:170px;background:#f0ebe3;display:flex;align-items:center;justify-content:center;font-size:3.8rem;}
+.pbg{position:absolute;top:10px;background:var(--r);color:#fff;padding:3px 10px;border-radius:50px;font-size:.7rem;font-weight:700;}
+body.ur .pbg{right:10px;}body.en .pbg{left:10px;}
+.pif{padding:12px;}
+.pn2{font-size:.9rem;font-weight:600;margin-bottom:3px;color:var(--p);line-height:1.4;}
+.pc2{font-size:.75rem;color:var(--mu);margin-bottom:8px;}
+.pb{display:flex;align-items:center;justify-content:space-between;}
+.pp{font-size:1rem;font-weight:700;color:var(--r);}
+.ba2{background:var(--p);color:#fff;border:none;padding:7px 12px;border-radius:50px;cursor:pointer;font-family:inherit;font-size:.78rem;transition:all .2s;}
+.ba2:hover{background:var(--a);color:var(--p);}
+.nr{text-align:center;padding:60px 20px;color:var(--mu);grid-column:1/-1;}
+.nr .ic{font-size:3.5rem;margin-bottom:10px;}
+.ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:200;backdrop-filter:blur(4px);}
+.ov.op{display:block;}
+.cp{position:fixed;top:0;bottom:0;width:370px;background:#fff;z-index:201;display:flex;flex-direction:column;box-shadow:6px 0 40px rgba(0,0,0,.2);transition:transform .3s ease;}
+body.ur .cp{left:0;transform:translateX(-100%);}body.en .cp{right:0;transform:translateX(100%);}
+.ov.op .cp{transform:translateX(0);}
+.ph{padding:16px 20px;background:var(--p);color:#fff;display:flex;align-items:center;justify-content:space-between;}
+.ph h2{font-size:1rem;}
+.bx{background:rgba(255,255,255,.18);border:none;color:#fff;width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:.9rem;display:flex;align-items:center;justify-content:center;transition:background .2s;}
+.bx:hover{background:var(--r);}
+.cbdy{flex:1;overflow-y:auto;padding:12px;}
+.ce{text-align:center;padding:50px 20px;color:var(--mu);}
+.ce .ei{font-size:3rem;margin-bottom:10px;}
+.cit{display:flex;gap:10px;align-items:center;padding:10px;border-radius:12px;border:1px solid var(--b);margin-bottom:8px;background:var(--l);}
+.em{font-size:2rem;}.inf{flex:1;}
+.cn{font-size:.85rem;font-weight:600;}.cp2{font-size:.78rem;color:var(--r);margin-top:2px;}
+.cq{display:flex;align-items:center;gap:6px;}
+.qb{width:24px;height:24px;border-radius:50%;border:1px solid var(--b);background:#fff;cursor:pointer;font-size:.9rem;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+.qb:hover{background:var(--r);color:#fff;border-color:var(--r);}
+.cf{padding:14px 18px;border-top:2px solid var(--b);background:#fff;}
+.cr{display:flex;justify-content:space-between;font-size:.84rem;color:var(--mu);margin-bottom:4px;}
+.ct{display:flex;justify-content:space-between;font-size:1rem;font-weight:700;color:var(--p);margin-bottom:12px;padding-top:8px;border-top:1px solid var(--b);}
+.bo{width:100%;background:var(--g);color:#fff;border:none;padding:12px;border-radius:12px;font-family:inherit;font-size:.92rem;font-weight:700;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:6px;}
+.bo:hover{background:#1da851;transform:translateY(-2px);}
+.mo{display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:300;backdrop-filter:blur(6px);align-items:center;justify-content:center;}
+.mo.op{display:flex;}
+.md{background:#fff;border-radius:20px;width:92%;max-width:560px;max-height:90vh;overflow-y:auto;box-shadow:0 40px 80px rgba(0,0,0,.3);animation:pi .3s ease;}
+@keyframes pi{from{transform:scale(.9);opacity:0}to{transform:scale(1);opacity:1}}
+.mh{padding:18px 22px;background:var(--p);color:#fff;border-radius:20px 20px 0 0;display:flex;align-items:center;justify-content:space-between;}
+.mh h2{font-size:1.05rem;}.mb{padding:20px;}
+.fs{margin-bottom:16px;}
+.fst{font-size:.88rem;font-weight:700;color:var(--p);margin-bottom:8px;padding-bottom:5px;border-bottom:2px solid var(--b);display:flex;align-items:center;gap:5px;}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.fg{margin-bottom:10px;}
+.fg label{display:block;margin-bottom:4px;font-size:.8rem;font-weight:600;}
+.fg input,.fg select,.fg textarea{width:100%;padding:9px 12px;border:2px solid var(--b);border-radius:10px;font-family:inherit;font-size:.86rem;outline:none;background:#fafafa;transition:border-color .2s;}
+body.ur .fg input,body.ur .fg select,body.ur .fg textarea{direction:rtl;}
+body.en .fg input,body.en .fg select,body.en .fg textarea{direction:ltr;}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--p);background:#fff;}
+.fg textarea{resize:vertical;}
+.os{background:var(--l);border-radius:12px;padding:12px;margin-bottom:12px;}
+.or{display:flex;justify-content:space-between;font-size:.83rem;margin-bottom:5px;}
+.or:last-child{font-weight:700;font-size:.95rem;color:var(--p);margin-bottom:0;padding-top:6px;border-top:1px solid var(--b);margin-top:3px;}
+.db{background:#e8f5e9;border:1px solid #c8e6c9;border-radius:12px;padding:12px;margin-bottom:12px;}
+.db h4{font-size:.86rem;font-weight:700;color:#2e7d32;margin-bottom:7px;display:flex;align-items:center;gap:5px;}
+.dr{display:flex;justify-content:space-between;font-size:.78rem;color:#2e7d32;margin-bottom:3px;}
+.po{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px;}
+.pt{border:2px solid var(--b);border-radius:12px;padding:10px;cursor:pointer;transition:all .2s;text-align:center;}
+.pt:hover{border-color:var(--p);}.pt.on{border-color:var(--p);background:#f0f8f4;}
+.pt .pi3{font-size:1.6rem;margin-bottom:3px;}.pt .pn3{font-size:.76rem;font-weight:600;}
+.pt .pd2{font-size:.66rem;color:var(--mu);margin-top:1px;}
+.cdf{display:none;}.cdf.sh{display:block;}
+.ib2{border-radius:10px;padding:10px;margin-top:8px;font-size:.78rem;display:none;}
+.ib2.jz{background:#fff3cd;color:#856404;}.ib2.ep{background:#d4edda;color:#155724;}
+.bp{width:100%;padding:13px;border:none;border-radius:12px;font-family:inherit;font-size:.92rem;font-weight:700;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:6px;}
+.bw{background:var(--g);color:#fff;}.bw:hover{background:#1da851;}
+.bk{background:var(--p);color:#fff;margin-top:8px;}.bk:hover{background:var(--p2);}
+.sb{text-align:center;padding:34px 20px;}
+.sb .si{font-size:3.5rem;margin-bottom:12px;}
+.sb h2{color:var(--p);margin-bottom:6px;}
+.sb p{color:var(--mu);font-size:.85rem;margin-bottom:14px;}
+.sin{background:#e8f5e9;padding:12px;border-radius:10px;font-size:.8rem;color:#2e7d32;margin-bottom:14px;line-height:2;}
+.bc2{background:var(--p);color:#fff;border:none;padding:10px 24px;border-radius:50px;font-family:inherit;font-size:.92rem;font-weight:700;cursor:pointer;transition:all .2s;}
+.bc2:hover{background:var(--a);color:var(--p);}
+.ao{display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:400;backdrop-filter:blur(6px);align-items:center;justify-content:center;}
+.ao.op{display:flex;}
+.ap{background:#fff;border-radius:20px;width:92%;max-width:700px;max-height:88vh;overflow-y:auto;box-shadow:0 40px 80px rgba(0,0,0,.3);animation:pi .3s ease;}
+.ah{padding:18px 22px;background:var(--p);color:#fff;border-radius:20px 20px 0 0;display:flex;align-items:center;justify-content:space-between;}
+.ab{padding:20px;}
+.sg{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px;}
+.sc{background:var(--l);border-radius:12px;padding:12px;text-align:center;border:1px solid var(--b);}
+.sn{font-size:1.5rem;font-weight:700;color:var(--a);}
+.sl{font-size:.72rem;color:var(--mu);margin-top:2px;}
+.ts{display:flex;gap:4px;margin-bottom:16px;border-bottom:2px solid var(--b);}
+.tb{padding:7px 14px;border:none;background:transparent;cursor:pointer;font-family:inherit;font-size:.85rem;color:var(--mu);border-bottom:3px solid transparent;margin-bottom:-2px;transition:all .2s;}
+.tb.on{color:var(--p);border-bottom-color:var(--p);font-weight:700;}
+.tp{display:none;}.tp.on{display:block;}
+.bp2{background:var(--p);color:#fff;border:none;padding:10px 20px;border-radius:10px;cursor:pointer;font-family:inherit;font-size:.9rem;font-weight:600;transition:all .2s;}
+.bp2:hover{background:var(--a);color:var(--p);}
+.tbl{width:100%;border-collapse:collapse;}
+.tbl th,.tbl td{padding:8px 11px;text-align:right;border-bottom:1px solid var(--b);font-size:.82rem;}
+.tbl th{background:var(--l);font-weight:700;color:var(--p);}
+.tbl tr:hover td{background:#fdf8f3;}
+.bd{background:#fee2e2;color:#dc2626;border:none;padding:4px 10px;border-radius:6px;cursor:pointer;font-family:inherit;font-size:.74rem;transition:all .2s;}
+.bd:hover{background:#dc2626;color:#fff;}
+.oc{border:1px solid var(--b);border-radius:12px;padding:12px;margin-bottom:10px;background:var(--l);}
+.och{display:flex;justify-content:space-between;align-items:center;margin-bottom:7px;}
+.on2{font-weight:700;color:var(--p);font-size:.86rem;}
+.os2{padding:3px 10px;border-radius:50px;font-size:.7rem;font-weight:700;}
+.sn2{background:#dcfce7;color:#16a34a;}.sd{background:#dbeafe;color:#2563eb;}
+.od{font-size:.78rem;color:var(--mu);line-height:1.8;}
+.bdn{background:var(--g);color:#fff;border:none;padding:5px 12px;border-radius:6px;cursor:pointer;font-family:inherit;font-size:.76rem;margin-top:7px;transition:all .2s;}
+.bdn:hover{background:#1da851;}
+.wf{position:fixed;bottom:24px;z-index:999;display:flex;flex-direction:column;gap:7px;}
+body.ur .wf{left:24px;align-items:flex-start;}body.en .wf{right:24px;align-items:flex-end;}
+.wb{width:58px;height:58px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 22px rgba(37,211,102,.5);text-decoration:none;transition:all .3s;animation:wp 2s infinite;}
+.wb:hover{transform:scale(1.12);box-shadow:0 10px 30px rgba(37,211,102,.7);}
+@keyframes wp{0%{box-shadow:0 0 0 0 rgba(37,211,102,.6)}70%{box-shadow:0 0 0 15px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+.wb svg{width:32px;height:32px;fill:#fff;}
+.wt{background:#fff;color:#1a1a1a;padding:6px 12px;border-radius:50px;font-size:.76rem;font-weight:600;box-shadow:0 4px 14px rgba(0,0,0,.14);white-space:nowrap;border:2px solid #25d366;}
+.toast{position:fixed;bottom:20px;background:var(--p);color:#fff;padding:10px 16px;border-radius:12px;box-shadow:0 8px 28px rgba(0,0,0,.2);font-size:.86rem;opacity:0;transition:all .3s;z-index:998;transform:translateY(80px);}
+body.ur .toast{right:20px;}body.en .toast{left:20px;}
+.toast.sh{transform:translateY(0);opacity:1;}
+footer{background:var(--p);color:rgba(255,255,255,.65);text-align:center;padding:16px;font-size:.78rem;margin-top:14px;}
+footer strong{color:var(--a);}
+@media(max-width:640px){
+  .ht{flex-wrap:wrap;padding:10px 14px;}.sw{order:3;max-width:100%;}
+  main{padding:14px;}.hero{padding:24px 16px;}.hero h1{font-size:1.25rem;}
+  .pg{grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:12px;}
+  .fr{grid-template-columns:1fr;}.sg{grid-template-columns:repeat(2,1fr);}
+  .cp{width:100%;}.ib{gap:10px;font-size:.72rem;}
+}
+
+/* CHAT BOX */
+.chat-wrap{position:fixed;bottom:24px;z-index:1000;}
+body.ur .chat-wrap{left:24px;}body.en .chat-wrap{right:24px;}
+.chat-btn{width:58px;height:58px;background:#0a3d2e;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 6px 22px rgba(10,61,46,.5);transition:all .3s;border:none;animation:cp 2s infinite;}
+@keyframes cp{0%{box-shadow:0 0 0 0 rgba(10,61,46,.6)}70%{box-shadow:0 0 0 15px rgba(10,61,46,0)}100%{box-shadow:0 0 0 0 rgba(10,61,46,0)}}
+.chat-btn:hover{transform:scale(1.1);}
+.chat-btn svg{width:30px;height:30px;fill:white;}
+.chat-box{display:none;position:absolute;bottom:70px;width:300px;background:white;border-radius:16px;box-shadow:0 10px 40px rgba(0,0,0,.2);overflow:hidden;animation:popIn .3s ease;}
+body.ur .chat-box{left:0;}body.en .chat-box{right:0;}
+.chat-box.open{display:flex;flex-direction:column;}
+.chat-head{background:#0a3d2e;color:white;padding:12px 16px;display:flex;align-items:center;gap:10px;}
+.chat-head-img{width:36px;height:36px;border-radius:50%;background:#f5a623;display:flex;align-items:center;justify-content:center;font-size:1.2rem;}
+.chat-head-info{flex:1;}
+.chat-head-name{font-size:.9rem;font-weight:700;}
+.chat-head-status{font-size:.72rem;color:rgba(255,255,255,.7);display:flex;align-items:center;gap:4px;}
+.online-dot{width:7px;height:7px;background:#25d366;border-radius:50%;display:inline-block;}
+.chat-msgs{height:220px;overflow-y:auto;padding:12px;background:#f0ebe3;display:flex;flex-direction:column;gap:8px;}
+.msg{max-width:80%;padding:8px 12px;border-radius:12px;font-size:.82rem;line-height:1.5;}
+.msg-bot{background:white;color:#1a1a1a;align-self:flex-start;border-bottom-left-radius:4px;}
+body.ur .msg-bot{border-bottom-left-radius:12px;border-bottom-right-radius:4px;align-self:flex-end;}
+.msg-user{background:#0a3d2e;color:white;align-self:flex-end;border-bottom-right-radius:4px;}
+body.ur .msg-user{border-bottom-right-radius:12px;border-bottom-left-radius:4px;align-self:flex-start;}
+.msg-time{font-size:.65rem;color:rgba(0,0,0,.4);margin-top:2px;}
+.typing{display:flex;gap:4px;padding:8px 12px;background:white;border-radius:12px;align-self:flex-start;width:fit-content;}
+body.ur .typing{align-self:flex-end;}
+.typing span{width:7px;height:7px;background:#aaa;border-radius:50%;animation:ty .8s infinite;}
+.typing span:nth-child(2){animation-delay:.15s;}.typing span:nth-child(3){animation-delay:.3s;}
+@keyframes ty{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.chat-input-wrap{padding:10px;background:white;display:flex;gap:8px;border-top:1px solid #eee;}
+.chat-input{flex:1;padding:8px 12px;border:2px solid #ddd;border-radius:50px;font-family:inherit;font-size:.82rem;outline:none;}
+body.ur .chat-input{direction:rtl;}body.en .chat-input{direction:ltr;}
+.chat-input:focus{border-color:#0a3d2e;}
+.chat-send{background:#0a3d2e;color:white;border:none;width:34px;height:34px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0;}
+.chat-send:hover{background:#f5a623;}
+.chat-wa-btn{width:100%;background:#25d366;color:white;border:none;padding:10px;font-family:inherit;font-size:.82rem;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:all .2s;}
+.chat-wa-btn:hover{background:#1da851;}
+</style>
+</head>
+<body class="ur">
+
+<header>
+  <div class="ib">
+    <span>🚚 <span id="ib1">کراچی میں ڈیلیوری</span></span>
+    <span>📞 03077153554</span>
+    <span>⏰ <span id="ib2">پیر تا ہفتہ | صبح 9 - رات 10</span></span>
+  </div>
+  <div class="ht">
+    <div><div class="logo">ربانی اسٹور 🏪</div><div class="ls">Rabbani Store — Karachi</div></div>
+    <div class="sw"><input type="text" id="si" placeholder="پروڈکٹ تلاش کریں..." oninput="fp()"><button>🔍</button></div>
+    <div class="hb">
+      <div class="lt">
+        <button class="lb on" id="bur" onclick="sl('ur')">اردو</button>
+        <button class="lb" id="ben" onclick="sl('en')">EN</button>
+      </div>
+      <button class="bc" onclick="oc2()">🛒 <span id="cl">کارٹ</span><span class="cc" id="cc">0</span></button>
+      <button class="ba" onclick="oad()">⚙️ <span id="al">ایڈمن</span></button>
+    </div>
+  </div>
+</header>
+
+<div class="cb"><div class="ci" id="cats"></div></div>
+
+<main>
+  <div class="hero">
+    <h1 id="ht2">خوش آمدید — ربانی اسٹور! 🎉</h1>
+    <p id="hs">کراچی میں تیز اور محفوظ ڈیلیوری — واٹس ایپ پر آرڈر کریں</p>
+    <div class="hbs">
+      <span class="hb2" id="hb1">🚚 ہوم ڈیلیوری</span>
+      <span class="hb2" id="hb2">💳 کارڈ / کیش</span>
+      <span class="hb2" id="hb3">✅ واٹس ایپ آرڈر</span>
+      <span class="hb2" id="hb4">📦 تازہ اشیاء</span>
+    </div>
+  </div>
+
+  <!-- OWNER SECTION -->
+  <div style="background:white;border-radius:18px;padding:20px;margin-bottom:22px;border:1px solid #ddd5c8;display:flex;align-items:center;gap:16px;box-shadow:0 4px 20px rgba(0,0,0,0.06);">
+    <img src="data:image/jpeg;base64,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" style="width:90px;height:90px;border-radius:50%;object-fit:cover;border:3px solid #f5a623;flex-shrink:0;" alt="Owner">
+    <div>
+      <div style="font-size:1.1rem;font-weight:700;color:#0a3d2e;" id="ownerName">محمد فہیم — مالک ربانی اسٹور</div>
+      
+      <a href="https://wa.me/923077153554" target="_blank" style="display:inline-flex;align-items:center;gap:5px;margin-top:8px;background:#25d366;color:white;padding:5px 14px;border-radius:50px;font-size:0.78rem;font-weight:600;text-decoration:none;">
+        <svg width="14" height="14" viewBox="0 0 32 32" fill="white"><path d="M16 .5C7.44.5.5 7.44.5 16c0 2.83.74 5.5 2.03 7.83L.5 31.5l7.87-2.06A15.44 15.44 0 0016 31.5C24.56 31.5 31.5 24.56 31.5 16S24.56.5 16 .5zm7.22 18.83c-.4-.2-2.34-1.15-2.7-1.28-.36-.13-.62-.2-.88.2s-1.01 1.28-1.24 1.54c-.23.27-.45.3-.84.1a10.54 10.54 0 01-3.1-1.91 11.6 11.6 0 01-2.15-2.67c-.22-.4 0-.6.17-.8.16-.17.36-.44.54-.67.18-.22.24-.38.36-.63.12-.26.06-.48-.03-.67-.1-.2-.88-2.12-1.2-2.9-.32-.77-.64-.66-.88-.67h-.75c-.26 0-.68.1-1.03.48-.36.38-1.36 1.33-1.36 3.24s1.4 3.76 1.59 4.02c.2.26 2.74 4.18 6.64 5.86.93.4 1.65.64 2.22.82.93.3 1.78.25 2.45.15.75-.11 2.34-.96 2.67-1.88.33-.93.33-1.72.23-1.88-.1-.17-.36-.27-.75-.47z"/></svg>
+        واٹس ایپ کریں
+      </a>
+    </div>
+  </div>
+
+  <div class="st" id="sec">🛍️ ہماری اشیاء</div>
+  <div class="pg" id="pg"></div>
+</main>
+
+<footer><strong>ربانی اسٹور | Rabbani Store</strong> — Karachi | 📞 03077153554<br>
+<small style="color:rgba(255,255,255,.35);font-size:.7rem;">© 2025 Rabbani Store. All rights reserved.</small></footer>
+
+<!-- CART -->
+<div class="ov" id="co" onclick="bge(event)">
+  <div class="cp">
+    <div class="ph"><h2>🛒 <span id="ctit">میرا کارٹ</span></h2><button class="bx" onclick="cc2()">✕</button></div>
+    <div class="cbdy" id="cb2"></div>
+    <div class="cf">
+      <div class="cr"><span id="sl2">اشیاء کی قیمت:</span><span id="csub">₨ 0</span></div>
+      <div class="cr"><span id="dl">ڈیلیوری چارج:</span><span id="cdel">₨ 150</span></div>
+      <div class="ct"><span id="tl">کل رقم:</span><span id="ctot">₨ 0</span></div>
+      <button class="bo" onclick="oof()">📋 <span id="obl">آرڈر کی تفصیل بھریں</span></button>
+    </div>
+  </div>
+</div>
+
+<!-- ORDER FORM -->
+<div class="mo" id="om">
+  <div class="md">
+    <div class="mh"><h2>📋 <span id="oft">آرڈر کی تفصیل</span></h2><button class="bx" onclick="com()">✕</button></div>
+    <div class="mb">
+      <div class="os" id="osb"></div>
+      <div class="db">
+        <h4>🚚 <span id="dt">ڈیلیوری کی معلومات</span></h4>
+        <div class="dr"><span id="dr1">علاقہ:</span><span id="dr2">کراچی (تمام علاقے)</span></div>
+        <div class="dr"><span id="dr3">ڈیلیوری وقت:</span><span id="dr4">2 سے 4 گھنٹے</span></div>
+        <div class="dr"><span id="dr5">ڈیلیوری چارج:</span><span>₨ 150</span></div>
+        <div class="dr"><span id="dr6">مفت ڈیلیوری:</span><span id="dr7">₨3000 سے زیادہ پر</span></div>
+      </div>
+      <div class="fs">
+        <div class="fst">👤 <span id="pit">ذاتی معلومات</span></div>
+        <div class="fr">
+          <div class="fg"><label id="nl">پورا نام *</label><input type="text" id="cn" placeholder="احمد علی / Ahmed Ali"></div>
+          <div class="fg"><label id="pl">فون نمبر *</label><input type="tel" id="cph" placeholder="03XXXXXXXXX"></div>
+        </div>
+        <div class="fg"><label id="wl">واٹس ایپ نمبر</label><input type="tel" id="cw" placeholder="03XXXXXXXXX"></div>
+      </div>
+      <div class="fs">
+        <div class="fst">📍 <span id="at">ڈیلیوری ایڈریس</span></div>
+        <div class="fg"><label id="adl">مکمل پتہ *</label><textarea id="ca" rows="2" placeholder="مکان نمبر، گلی، محلہ..."></textarea></div>
+        <div class="fr">
+          <div class="fg"><label id="arl">علاقہ *</label>
+            <select id="car">
+              <option value="">علاقہ چنیں / Select Area</option>
+              <option>گلشن اقبال / Gulshan-e-Iqbal</option><option>نارتھ ناظم آباد / North Nazimabad</option>
+              <option>کورنگی / Korangi</option><option>لانڈھی / Landhi</option><option>ملیر / Malir</option>
+              <option>ڈیفینس / DHA</option><option>کلفٹن / Clifton</option>
+              <option>گلستان جوہر / Gulistan-e-Johar</option><option>فیڈرل بی ایریا / Federal B Area</option>
+              <option>نیو کراچی / New Karachi</option><option>اورنگی / Orangi Town</option>
+              <option>صدر / Saddar</option><option>لیاقت آباد / Liaquatabad</option>
+              <option>سائٹ / SITE</option><option>دیگر / Other</option>
+            </select>
+          </div>
+          <div class="fg"><label id="ll">قریبی نشانی</label><input type="text" id="clm" placeholder="مسجد / Mosque"></div>
+        </div>
+        <div class="fg"><label id="tl2">ڈیلیوری کا وقت</label>
+          <select id="ctm">
+            <option>جلد از جلد / ASAP (2–4 hrs)</option><option>صبح / Morning (9–12)</option>
+            <option>دوپہر / Afternoon (12–4)</option><option>شام / Evening (4–8)</option><option>رات / Night (8–10)</option>
+          </select>
+        </div>
+        <div class="fg"><label id="notel">خصوصی ہدایات / Special Instructions</label><textarea id="cno" rows="2" placeholder="مثلاً: گیٹ پر گھنٹی / Ring doorbell"></textarea></div>
+      </div>
+      <div class="fs">
+        <div class="fst">💳 <span id="payt">ادائیگی کا طریقہ</span></div>
+        <div class="po">
+          <div class="pt on" onclick="sp('cash',this)"><div class="pi3">💵</div><div class="pn3" id="cashl">کیش</div><div class="pd2" id="cashd">ڈیلیوری پر</div></div>
+          <div class="pt" onclick="sp('card',this)"><div class="pi3">💳</div><div class="pn3" id="cardl">بینک کارڈ</div><div class="pd2">Visa/Mastercard</div></div>
+          <div class="pt" onclick="sp('jazz',this)"><div class="pi3">📱</div><div class="pn3">JazzCash</div><div class="pd2" id="wall">موبائل والٹ</div></div>
+          <div class="pt" onclick="sp('easy',this)"><div class="pi3">🟢</div><div class="pn3">EasyPaisa</div><div class="pd2" id="wal2">موبائل والٹ</div></div>
+        </div>
+        <div class="cdf" id="cdf">
+          <div class="fg"><label id="cnl">کارڈ نمبر</label><input type="text" id="cnum" placeholder="1234 5678 9012 3456" maxlength="19" oninput="fc(this)"></div>
+          <div class="fr">
+            <div class="fg"><label id="expl">میعاد / Expiry</label><input type="text" id="cexp" placeholder="MM/YY" maxlength="5" oninput="fe(this)"></div>
+            <div class="fg"><label>CVV</label><input type="text" id="ccvv" placeholder="123" maxlength="3"></div>
+          </div>
+          <div class="fg"><label id="chnl">کارڈ ہولڈر کا نام</label><input type="text" id="chn" placeholder="As on card"></div>
+        </div>
+        <div class="ib2 jz" id="ji">💡 <span id="jt">آرڈر کے بعد JazzCash نمبر 03077153554 پر ادائیگی کریں اور اسکرین شاٹ واٹس ایپ کریں۔</span></div>
+        <div class="ib2 ep" id="ei">💡 <span id="et">آرڈر کے بعد EasyPaisa نمبر 03077153554 پر ادائیگی کریں اور اسکرین شاٹ واٹس ایپ کریں۔</span></div>
+      </div>
+      <button class="bp bw" onclick="po2('wa')">
+        <svg width="20" height="20" viewBox="0 0 32 32" fill="white"><path d="M16 .5C7.44.5.5 7.44.5 16c0 2.83.74 5.5 2.03 7.83L.5 31.5l7.87-2.06A15.44 15.44 0 0016 31.5C24.56 31.5 31.5 24.56 31.5 16S24.56.5 16 .5zm7.22 18.83c-.4-.2-2.34-1.15-2.7-1.28-.36-.13-.62-.2-.88.2s-1.01 1.28-1.24 1.54c-.23.27-.45.3-.84.1a10.54 10.54 0 01-3.1-1.91 11.6 11.6 0 01-2.15-2.67c-.22-.4 0-.6.17-.8.16-.17.36-.44.54-.67.18-.22.24-.38.36-.63.12-.26.06-.48-.03-.67-.1-.2-.88-2.12-1.2-2.9-.32-.77-.64-.66-.88-.67h-.75c-.26 0-.68.1-1.03.48-.36.38-1.36 1.33-1.36 3.24s1.4 3.76 1.59 4.02c.2.26 2.74 4.18 6.64 5.86.93.4 1.65.64 2.22.82.93.3 1.78.25 2.45.15.75-.11 2.34-.96 2.67-1.88.33-.93.33-1.72.23-1.88-.1-.17-.36-.27-.75-.47z"/></svg>
+        <span id="wbl">واٹس ایپ پر آرڈر کریں</span>
+      </button>
+      <button class="bp bk" onclick="po2('confirm')">✅ <span id="cbl">آرڈر کنفرم کریں</span></button>
+    </div>
+  </div>
+</div>
+
+<!-- SUCCESS -->
+<div class="mo" id="sm"><div class="md"><div class="mb"><div class="sb" id="sc"></div></div></div></div>
+
+<!-- ADMIN -->
+<div class="ao" id="aov">
+  <div class="ap">
+    <div class="ah"><h2>⚙️ <span id="atit">ایڈمن پینل</span> — Rabbani Store</h2><button class="bx" onclick="cad()">✕</button></div>
+    <div class="ab">
+      <div class="sg">
+        <div class="sc2"><div class="sn" id="sr">0</div><div class="sl" id="srl">آمدن (₨)</div></div>
+        <div class="sc2"><div class="sn" id="so">0</div><div class="sl" id="sol">آرڈرز</div></div>
+        <div class="sc2"><div class="sn" id="sp">0</div><div class="sl" id="spl">پروڈکٹس</div></div>
+        <div class="sc2"><div class="sn" id="spe">0</div><div class="sl" id="spel">زیر التواء</div></div>
+      </div>
+      <div class="ts">
+        <button class="tb on" id="t1" onclick="st('tp1',this)">📦 <span id="t1l">آرڈرز</span></button>
+        <button class="tb" id="t2" onclick="st('tp2',this)">➕ <span id="t2l">پروڈکٹ</span></button>
+        <button class="tb" id="t3" onclick="st('tp3',this)">📋 <span id="t3l">لسٹ</span></button>
+      </div>
+      <div class="tp on" id="tp1"><div id="ol"></div></div>
+      <div class="tp" id="tp2">
+        <div class="fr">
+          <div class="fg"><label id="pnl">پروڈکٹ کا نام</label><input type="text" id="pn" placeholder="آم 1 کلو / Mango 1kg"></div>
+          <div class="fg"><label id="ppl">قیمت (₨)</label><input type="number" id="pp" placeholder="500"></div>
+        </div>
+        <div class="fr">
+          <div class="fg"><label id="pcl">کیٹگری</label>
+            <select id="pc">
+              <option value="food">کھانے پینے / Food</option><option value="clothes">کپڑے / Clothing</option>
+              <option value="electronics">الیکٹرانکس / Electronics</option><option value="household">گھریلو / Household</option>
+              <option value="health">صحت / Health</option><option value="other">دیگر / Other</option>
+            </select>
+          </div>
+          <div class="fg"><label>Emoji</label><input type="text" id="pe" placeholder="🍎"></div>
+        </div>
+        <div class="fr">
+          <div class="fg"><label id="pbl">بیج / Badge</label>
+            <select id="pb"><option value="">کوئی نہیں / None</option><option value="نیا/New">نیا/New</option><option value="آفر/Sale">آفر/Sale</option><option value="مقبول/Popular">مقبول/Popular</option></select>
+          </div>
+          <div class="fg"><label id="psl">اسٹاک</label><input type="number" id="ps" placeholder="100"></div>
+        </div>
+        <button class="bp2" onclick="ap2()">➕ <span id="apl">پروڈکٹ شامل کریں</span></button>
+      </div>
+      <div class="tp" id="tp3">
+        <table class="tbl"><thead><tr><th id="th1">نام</th><th id="th2">قیمت</th><th id="th3">کیٹگری</th><th id="th4">حذف</th></tr></thead><tbody id="pt"></tbody></table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WA FLOAT -->
+<div class="wf">
+  <div class="wt" id="wtip">💬 واٹس ایپ پر بات کریں</div>
+  <a class="wb" id="wa" href="https://wa.me/923077153554?text=السلام علیکم! ربانی اسٹور سے آرڈر کرنا چاہتا ہوں۔" target="_blank">
+    <svg viewBox="0 0 32 32"><path d="M16 .5C7.44.5.5 7.44.5 16c0 2.83.74 5.5 2.03 7.83L.5 31.5l7.87-2.06A15.44 15.44 0 0016 31.5C24.56 31.5 31.5 24.56 31.5 16S24.56.5 16 .5zm0 28.2a13.1 13.1 0 01-6.68-1.83l-.48-.28-4.67 1.22 1.25-4.56-.31-.5A13.17 13.17 0 1116 28.7zm7.22-9.87c-.4-.2-2.34-1.15-2.7-1.28-.36-.13-.62-.2-.88.2s-1.01 1.28-1.24 1.54c-.23.27-.45.3-.84.1a10.54 10.54 0 01-3.1-1.91 11.6 11.6 0 01-2.15-2.67c-.22-.4 0-.6.17-.8.16-.17.36-.44.54-.67.18-.22.24-.38.36-.63.12-.26.06-.48-.03-.67-.1-.2-.88-2.12-1.2-2.9-.32-.77-.64-.66-.88-.67h-.75c-.26 0-.68.1-1.03.48-.36.38-1.36 1.33-1.36 3.24s1.4 3.76 1.59 4.02c.2.26 2.74 4.18 6.64 5.86.93.4 1.65.64 2.22.82.93.3 1.78.25 2.45.15.75-.11 2.34-.96 2.67-1.88.33-.93.33-1.72.23-1.88-.1-.17-.36-.27-.75-.47z"/></svg>
+  </a>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+const WN='923077153554',DEL=150,FM=3000;
+let lg='ur';
+const TX={
+ur:{search:'پروڈکٹ تلاش کریں...',cart:'کارٹ',admin:'ایڈمن',ht:'خوش آمدید — ربانی اسٹور! 🎉',hs:'کراچی میں تیز اور محفوظ ڈیلیوری — واٹس ایپ پر آرڈر کریں',hb1:'🚚 ہوم ڈیلیوری',hb2:'💳 کارڈ / کیش',hb3:'✅ واٹس ایپ آرڈر',hb4:'📦 تازہ اشیاء',sec:'🛍️ ہماری اشیاء',ctit:'میرا کارٹ',sl:'اشیاء کی قیمت:',dl:'ڈیلیوری چارج:',tl:'کل رقم:',obl:'آرڈر کی تفصیل بھریں',oft:'آرڈر کی تفصیل',dt:'ڈیلیوری کی معلومات',dr1:'علاقہ:',dr2:'کراچی (تمام علاقے)',dr3:'ڈیلیوری وقت:',dr4:'2 سے 4 گھنٹے',dr5:'ڈیلیوری چارج:',dr6:'مفت ڈیلیوری:',dr7:'₨3000 سے زیادہ پر',pit:'ذاتی معلومات',nl:'پورا نام *',pl:'فون نمبر *',wl:'واٹس ایپ نمبر',at:'ڈیلیوری ایڈریس',adl:'مکمل پتہ *',arl:'علاقہ *',ll:'قریبی نشانی',tl2:'ڈیلیوری کا وقت',notel:'خصوصی ہدایات',payt:'ادائیگی کا طریقہ',cashl:'کیش',cashd:'ڈیلیوری پر',cardl:'بینک کارڈ',wall:'موبائل والٹ',wal2:'موبائل والٹ',cnl:'کارڈ نمبر',expl:'میعاد',chnl:'کارڈ ہولڈر کا نام',jt:'آرڈر کے بعد JazzCash نمبر 03077153554 پر ادائیگی کریں اور اسکرین شاٹ واٹس ایپ کریں۔',et:'آرڈر کے بعد EasyPaisa نمبر 03077153554 پر ادائیگی کریں اور اسکرین شاٹ واٹس ایپ کریں۔',wbl:'واٹس ایپ پر آرڈر کریں',cbl:'آرڈر کنفرم کریں',atit:'ایڈمن پینل',srl:'آمدن (₨)',sol:'آرڈرز',spl:'پروڈکٹس',spel:'زیر التواء',t1l:'آرڈرز',t2l:'پروڈکٹ',t3l:'لسٹ',pnl:'پروڈکٹ کا نام',ppl:'قیمت (₨)',pcl:'کیٹگری',pbl:'بیج',psl:'اسٹاک',apl:'پروڈکٹ شامل کریں',th1:'نام',th2:'قیمت',th3:'کیٹگری',th4:'حذف',wtip:'💬 واٹس ایپ پر بات کریں',ib1:'کراچی میں ڈیلیوری',ib2:'پیر تا ہفتہ | صبح 9 - رات 10',ac:'+ کارٹ',ec:'کارٹ خالی ہے',np:'کوئی پروڈکٹ نہیں ملی',allc:'تمام',md:'مکمل',no:'ابھی کوئی آرڈر نہیں',rf:'⚠️ تمام ضروری خانے بھریں',ew:'⚠️ کارٹ خالی ہے!',ad:'کارٹ میں شامل',dd:'پروڈکٹ حذف ہو گیا',rp:'⚠️ نام اور قیمت ضروری ہے',od:'✅ آرڈر مکمل ہو گیا',os:'آرڈر کامیاب!',on:'آرڈر نمبر:',ty:'ٹھیک ہے، شکریہ!',fr:'🎉 مفت!',tot:'کل رقم',delv:'ڈیلیوری',cp:'کیش (ڈیلیوری پر)',bk:'بینک کارڈ',cats:{food:'کھانے پینے',clothes:'کپڑے',electronics:'الیکٹرانکس',household:'گھریلو',health:'صحت',other:'دیگر'}},
+en:{search:'Search products...',cart:'Cart',admin:'Admin',ht:'Welcome to Rabbani Store! 🎉',hs:'Fast & safe delivery in Karachi — Order on WhatsApp',hb1:'🚚 Home Delivery',hb2:'💳 Card / Cash',hb3:'✅ WhatsApp Order',hb4:'📦 Fresh Items',sec:'🛍️ Our Products',ctit:'My Cart',sl:'Subtotal:',dl:'Delivery:',tl:'Total:',obl:'Fill Order Details',oft:'Order Details',dt:'Delivery Info',dr1:'Area:',dr2:'Karachi (All Areas)',dr3:'Delivery Time:',dr4:'2 to 4 Hours',dr5:'Delivery Charge:',dr6:'Free Delivery:',dr7:'On orders above ₨3000',pit:'Personal Info',nl:'Full Name *',pl:'Phone Number *',wl:'WhatsApp Number',at:'Delivery Address',adl:'Full Address *',arl:'Area *',ll:'Landmark',tl2:'Preferred Time',notel:'Special Instructions',payt:'Payment Method',cashl:'Cash',cashd:'Pay on Delivery',cardl:'Bank Card',wall:'Mobile Wallet',wal2:'Mobile Wallet',cnl:'Card Number',expl:'Expiry',chnl:'Cardholder Name',jt:'After order, pay to JazzCash 03077153554 and send screenshot on WhatsApp.',et:'After order, pay to EasyPaisa 03077153554 and send screenshot on WhatsApp.',wbl:'Order on WhatsApp',cbl:'Confirm Order',atit:'Admin Panel',srl:'Revenue (₨)',sol:'Orders',spl:'Products',spel:'Pending',t1l:'Orders',t2l:'Product',t3l:'List',pnl:'Product Name',ppl:'Price (₨)',pcl:'Category',pbl:'Badge',psl:'Stock',apl:'Add Product',th1:'Name',th2:'Price',th3:'Category',th4:'Delete',wtip:'💬 Chat on WhatsApp',ib1:'Delivery in Karachi',ib2:'Mon–Sat | 9AM – 10PM',ac:'+ Cart',ec:'Cart is empty',np:'No products found',allc:'All',md:'Done',no:'No orders yet',rf:'⚠️ Please fill all required fields',ew:'⚠️ Cart is empty!',ad:'added to cart',dd:'Product deleted',rp:'⚠️ Name and price required',od:'✅ Order completed',os:'Order Placed!',on:'Order No:',ty:'Thank You!',fr:'🎉 Free!',tot:'Total',delv:'Delivery',cp:'Cash on Delivery',bk:'Bank Card',cats:{food:'Food & Drink',clothes:'Clothing',electronics:'Electronics',household:'Household',health:'Health',other:'Other'}}
+};
+
+function t(k){return TX[lg][k]||k;}
+function catL(c){return TX[lg].cats[c]||c;}
+
+let prods=[
+  {id:1,ur:'باسمتی چاول 5 کلو',en:'Basmati Rice 5kg',price:1200,cat:'food',em:'🌾',badge:'مقبول/Popular'},
+  {id:2,ur:'گھی 1 لیٹر',en:'Ghee 1 Litre',price:850,cat:'food',em:'🫙',badge:''},
+  {id:3,ur:'چائے پتی 200g',en:'Tea Leaves 200g',price:320,cat:'food',em:'🍵',badge:'آفر/Sale'},
+  {id:4,ur:'دال مسور 1 کلو',en:'Lentils 1kg',price:380,cat:'food',em:'🫘',badge:''},
+  {id:5,ur:'مردانہ شرٹ',en:"Men's Shirt",price:1500,cat:'clothes',em:'👕',badge:'نیا/New'},
+  {id:6,ur:'خواتین دوپٹہ',en:"Women's Dupatta",price:800,cat:'clothes',em:'🧣',badge:''},
+  {id:7,ur:'موبائل چارجر',en:'Mobile Charger',price:650,cat:'electronics',em:'🔌',badge:''},
+  {id:8,ur:'ہیڈ فون',en:'Headphones',price:2200,cat:'electronics',em:'🎧',badge:'آفر/Sale'},
+  {id:9,ur:'صابن (3 پیس)',en:'Soap (3 Pack)',price:280,cat:'household',em:'🧼',badge:''},
+  {id:10,ur:'LED بلب',en:'LED Bulb',price:350,cat:'household',em:'💡',badge:''},
+  {id:11,ur:'وٹامن C',en:'Vitamin C',price:450,cat:'health',em:'💊',badge:'نیا/New'},
+  {id:12,ur:'بچوں کی جوتی',en:'Kids Shoes',price:950,cat:'clothes',em:'👟',badge:'نیا/New'},
+];
+let cart=[],orders=[],nid=13,noid=1001,pm='cash',cc3='all';
+function pn(p){return lg==='en'?p.en:p.ur;}
+
+function sl(l){
+  lg=l;
+  document.body.className=l;
+  document.getElementById('htmlRoot').setAttribute('lang',l);
+  document.getElementById('htmlRoot').setAttribute('dir',l==='ur'?'rtl':'ltr');
+  document.getElementById('bur').classList.toggle('on',l==='ur');
+  document.getElementById('ben').classList.toggle('on',l==='en');
+  document.getElementById('wa').href=l==='en'?`https://wa.me/${WN}?text=Hello! I want to order from Rabbani Store.`:`https://wa.me/${WN}?text=السلام علیکم! ربانی اسٹور سے آرڈر کرنا چاہتا ہوں۔`;
+  const ids=['ib1','ib2','cl','al','ht2','hs','hb1','hb2','hb3','hb4','sec','ctit','sl2','dl','tl','obl','oft','dt','dr1','dr2','dr3','dr4','dr5','dr6','dr7','pit','nl','pl','wl','at','adl','arl','ll','tl2','notel','payt','cashl','cashd','cardl','wall','wal2','cnl','expl','chnl','jt','et','wbl','cbl','atit','srl','sol','spl','spel','t1l','t2l','t3l','pnl','ppl','pcl','pbl','psl','apl','th1','th2','th3','th4','wtip'];
+  ids.forEach(id=>{const e=document.getElementById(id);if(e&&TX[l][id])e.textContent=TX[l][id];});
+  document.getElementById('si').placeholder=t('search');
+  rc();rp2();ucu();
+}
+
+function rc(){
+  const uc=[...new Set(prods.map(p=>p.cat))];
+  document.getElementById('cats').innerHTML=`<button class="cb2 ${cc3==='all'?'on':''}" onclick="scat('all')">${t('allc')}</button>`+uc.map(c=>`<button class="cb2 ${cc3===c?'on':''}" onclick="scat('${c}')">${catL(c)}</button>`).join('');
+}
+function scat(c){cc3=c;rc();rp2();}
+
+function gf(){
+  const q=document.getElementById('si').value.trim().toLowerCase();
+  return prods.filter(p=>(cc3==='all'||p.cat===cc3)&&(!q||pn(p).toLowerCase().includes(q)||catL(p.cat).toLowerCase().includes(q)));
+}
+function rp2(){
+  const g=document.getElementById('pg'),f=gf();
+  if(!f.length){g.innerHTML=`<div class="nr"><div class="ic">🔍</div><p>${t('np')}</p></div>`;return;}
+  g.innerHTML=f.map(p=>`<div class="pc">${p.badge?`<div class="pbg">${p.badge}</div>`:''}<div class="pi2">${p.em}</div><div class="pif"><div class="pn2">${pn(p)}</div><div class="pc2">${catL(p.cat)}</div><div class="pb"><div class="pp">₨ ${p.price.toLocaleString()}</div><button class="ba2" onclick="atc(${p.id})">${t('ac')}</button></div></div></div>`).join('');
+}
+function fp(){rp2();}
+
+function atc(id){
+  const p=prods.find(x=>x.id===id);if(!p)return;
+  const e=cart.find(x=>x.id===id);if(e)e.qty++;else cart.push({...p,qty:1});
+  ucu();st2(`✅ ${pn(p)} ${t('ad')}`);
+}
+function cq2(id,d){
+  const i=cart.find(x=>x.id===id);if(!i)return;i.qty+=d;if(i.qty<=0)cart=cart.filter(x=>x.id!==id);ucu();
+}
+function gs(){return cart.reduce((s,i)=>s+i.price*i.qty,0);}
+function gd(){return gs()>=FM?0:DEL;}
+function gt(){return gs()+gd();}
+
+function ucu(){
+  const s=gs(),d=gd(),tt=gt(),cnt=cart.reduce((s,i)=>s+i.qty,0);
+  document.getElementById('cc').textContent=cnt;
+  document.getElementById('csub').textContent=`₨ ${s.toLocaleString()}`;
+  document.getElementById('cdel').textContent=d===0?t('fr'):`₨ ${d}`;
+  document.getElementById('ctot').textContent=`₨ ${tt.toLocaleString()}`;
+  const b=document.getElementById('cb2');
+  if(!cart.length){b.innerHTML=`<div class="ce"><div class="ei">🛒</div><p>${t('ec')}</p></div>`;return;}
+  b.innerHTML=cart.map(i=>`<div class="cit"><div class="em">${i.em}</div><div class="inf"><div class="cn">${pn(i)}</div><div class="cp2">₨ ${(i.price*i.qty).toLocaleString()}</div></div><div class="cq"><button class="qb" onclick="cq2(${i.id},-1)">−</button><span>${i.qty}</span><button class="qb" onclick="cq2(${i.id},1)">+</button></div></div>`).join('');
+}
+
+function oc2(){document.getElementById('co').classList.add('op');}
+function cc2(){document.getElementById('co').classList.remove('op');}
+function bge(e){if(e.target===document.getElementById('co'))cc2();}
+
+function oof(){
+  if(!cart.length){st2(t('ew'));return;}
+  cc2();bs();document.getElementById('om').classList.add('op');
+}
+function com(){document.getElementById('om').classList.remove('op');}
+
+function bs(){
+  const b=document.getElementById('osb'),s=gs(),d=gd(),tt=gt();
+  b.innerHTML=cart.map(i=>`<div class="or"><span>${i.em} ${pn(i)} × ${i.qty}</span><span>₨ ${(i.price*i.qty).toLocaleString()}</span></div>`).join('')+
+    `<div class="or"><span>${t('delv')}:</span><span>${d===0?t('fr'):'₨ '+d}</span></div><div class="or"><span>${t('tot')}:</span><span>₨ ${tt.toLocaleString()}</span></div>`;
+}
+
+function sp(type,el){
+  pm=type;document.querySelectorAll('.pt').forEach(x=>x.classList.remove('on'));el.classList.add('on');
+  document.getElementById('cdf').classList.toggle('sh',type==='card');
+  document.getElementById('ji').style.display=type==='jazz'?'block':'none';
+  document.getElementById('ei').style.display=type==='easy'?'block':'none';
+}
+function fc(el){let v=el.value.replace(/\D/g,'').substring(0,16);el.value=v.replace(/(.{4})/g,'$1 ').trim();}
+function fe(el){let v=el.value.replace(/\D/g,'');if(v.length>=2)v=v.substring(0,2)+'/'+v.substring(2,4);el.value=v;}
+
+function po2(type){
+  const nm=document.getElementById('cn').value.trim();
+  const ph=document.getElementById('cph').value.trim();
+  const ad=document.getElementById('ca').value.trim();
+  const ar=document.getElementById('car').value;
+  if(!nm||!ph||!ad||!ar){st2(t('rf'));return;}
+  const lm=document.getElementById('clm').value.trim();
+  const tm=document.getElementById('ctm').value;
+  const nt=document.getElementById('cno').value.trim();
+  const s=gs(),d=gd(),tt=gt();
+  const ord={id:noid++,name:nm,phone:ph,addr:ad,area:ar,landmark:lm,time:tm,note:nt,
+    payment:pm,items:[...cart],sub:s,del:d,total:tt,status:'new'};
+  orders.push(ord);
+  localStorage.setItem('rabbani_orders', JSON.stringify(orders));
+  cart=[];ucu();com();
+  if(type==='wa'){window.open(`https://wa.me/${WN}?text=${encodeURIComponent(wam(ord))}`,'_blank');}
+  ss(ord);
+}
+
+function gpl(p){const m={cash:t('cp'),card:t('bk'),jazz:'JazzCash',easy:'EasyPaisa'};return m[p]||p;}
+
+function wam(o){
+  const e=lg==='en';
+  let m=`🏪 *Rabbani Store — ${e?'New Order':'نیا آرڈر'}* 🛒\n━━━━━━━━━━━━\n📋 *${e?'Order':'آرڈر'} #${o.id}*\n━━━━━━━━━━━━\n`;
+  o.items.forEach(i=>{m+=`• ${i.em} ${pn(i)} × ${i.qty} = ₨${(i.price*i.qty).toLocaleString()}\n`;});
+  m+=`━━━━━━━━━━━━\n💰 ${e?'Subtotal':'اشیاء'}: ₨${o.sub.toLocaleString()}\n🚚 ${e?'Delivery':'ڈیلیوری'}: ${o.del===0?(e?'Free':'مفت'):'₨'+o.del}\n✅ *${e?'Total':'کل'}: ₨${o.total.toLocaleString()}*\n━━━━━━━━━━━━\n`;
+  m+=`👤 ${o.name}\n📞 ${o.phone}\n📍 ${o.addr}\n🏙️ ${o.area}\n`;
+  if(o.landmark)m+=`🗺️ ${o.landmark}\n`;
+  m+=`⏰ ${o.time}\n💳 ${gpl(o.payment)}\n`;
+  if(o.note)m+=`📝 ${o.note}\n`;
+  m+=`━━━━━━━━━━━━\n${e?'Thank you! 🙏':'شکریہ! 🙏'}`;
+  return m;
+}
+
+function ss(o){
+  document.getElementById('sc').innerHTML=`<div class="si">🎉</div><h2>${t('os')}</h2><p>${t('on')} <strong>#${o.id}</strong></p><div class="sin">🚚 ${t('delv')}: <strong>${o.time}</strong><br>💳 ${gpl(o.payment)}<br>${t('tot')}: <strong>₨ ${o.total.toLocaleString()}</strong></div><button class="bc2" onclick="cs()">${t('ty')}</button>`;
+  document.getElementById('sm').classList.add('op');
+}
+function cs(){document.getElementById('sm').classList.remove('op');}
+
+function oad(){const pass=prompt(lg==='en'?'Enter Admin Password:':'ایڈمن پاس ورڈ درج کریں:');if(pass==='Rabbani@2025'){us();rol();rpt2();document.getElementById('aov').classList.add('op');}else if(pass!==null){alert(lg==='en'?'❌ Wrong Password!':'❌ غلط پاس ورڈ!');}}
+function cad(){document.getElementById('aov').classList.remove('op');}
+document.getElementById('aov').addEventListener('click',function(e){if(e.target===this)cad();});
+
+function us(){
+  const rv=orders.reduce((s,o)=>s+o.total,0);
+  const pnd=orders.filter(o=>o.status==='new').length;
+  document.getElementById('sr').textContent=rv.toLocaleString();
+  document.getElementById('so').textContent=orders.length;
+  document.getElementById('sp').textContent=prods.length;
+  document.getElementById('spe').textContent=pnd;
+}
+
+function rol(){
+  const el=document.getElementById('ol');
+  if(!orders.length){el.innerHTML=`<div style="text-align:center;padding:40px;color:var(--mu)">📭 ${t('no')}</div>`;return;}
+  el.innerHTML=[...orders].reverse().map(o=>`<div class="oc"><div class="och"><span class="on2">#${o.id} — ${o.name}</span><span class="os2 ${o.status==='new'?'sn2':'sd'}">${o.status==='new'?(lg==='en'?'New':'نیا'):(lg==='en'?'Done':'مکمل')}</span></div><div class="od">📦 ${o.items.map(i=>`${i.em}${pn(i)}×${i.qty}`).join(', ')}<br>💰 ₨${o.total.toLocaleString()} | 💳 ${gpl(o.payment)}<br>📍 ${o.area} — ${o.addr}<br>📞 ${o.phone} | ⏰ ${o.time}${o.note?`<br>📝 ${o.note}`:''}</div>${o.status==='new'?`<button class="bdn" onclick="mkd(${o.id})">${t('md')}</button>`:''}</div>`).join('');
+}
+
+function mkd(id){
+  const o=orders.find(x=>x.id===id);if(o){o.status='done';rol();us();st2(t('od'));}
+}
+
+function st(tabId,btn){
+  document.querySelectorAll('.tp').forEach(t=>t.classList.remove('on'));
+  document.querySelectorAll('.tb').forEach(b=>b.classList.remove('on'));
+  document.getElementById(tabId).classList.add('on');btn.classList.add('on');
+  if(tabId==='tp3')rpt2();if(tabId==='tp1')rol();
+}
+
+function ap2(){
+  const nm=document.getElementById('pn').value.trim();
+  const pr=parseInt(document.getElementById('pp').value);
+  const cat=document.getElementById('pc').value;
+  const em=document.getElementById('pe').value.trim()||'📦';
+  const badge=document.getElementById('pb').value;
+  if(!nm||!pr){st2(t('rp'));return;}
+  prods.push({id:nid++,ur:nm,en:nm,price:pr,cat,em,badge});
+  localStorage.setItem('rabbani_prods', JSON.stringify(prods));
+  ['pn','pp','pe','ps'].forEach(id=>document.getElementById(id).value='');
+  rc();rp2();us();st2(`✅ "${nm}" ${lg==='en'?'added':t('ad')}`);
+}
+
+function dp(id){
+  prods=prods.filter(p=>p.id!==id);cart=cart.filter(c=>c.id!==id);
+  localStorage.setItem('rabbani_prods', JSON.stringify(prods));
+  ucu();rpt2();rc();rp2();us();st2(t('dd'));
+}
+
+function rpt2(){
+  document.getElementById('pt').innerHTML=prods.map(p=>`<tr><td>${p.em} ${pn(p)}</td><td>₨${p.price.toLocaleString()}</td><td>${catL(p.cat)}</td><td><button class="bd" onclick="dp(${p.id})">${t('th4')}</button></td></tr>`).join('');
+}
+
+function st2(msg){
+  const e=document.getElementById('toast');e.textContent=msg;e.classList.add('sh');
+  setTimeout(()=>e.classList.remove('sh'),3000);
+}
+
+// Add stat card styles
+document.head.insertAdjacentHTML('beforeend','<style>.sc2{background:var(--l);border-radius:12px;padding:12px;text-align:center;border:1px solid var(--b);}
+/* CHAT BOX */
+.chat-wrap{position:fixed;bottom:24px;z-index:1000;}
+body.ur .chat-wrap{left:24px;}body.en .chat-wrap{right:24px;}
+.chat-btn{width:58px;height:58px;background:#0a3d2e;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 6px 22px rgba(10,61,46,.5);transition:all .3s;border:none;animation:cp 2s infinite;}
+@keyframes cp{0%{box-shadow:0 0 0 0 rgba(10,61,46,.6)}70%{box-shadow:0 0 0 15px rgba(10,61,46,0)}100%{box-shadow:0 0 0 0 rgba(10,61,46,0)}}
+.chat-btn:hover{transform:scale(1.1);}
+.chat-btn svg{width:30px;height:30px;fill:white;}
+.chat-box{display:none;position:absolute;bottom:70px;width:300px;background:white;border-radius:16px;box-shadow:0 10px 40px rgba(0,0,0,.2);overflow:hidden;animation:popIn .3s ease;}
+body.ur .chat-box{left:0;}body.en .chat-box{right:0;}
+.chat-box.open{display:flex;flex-direction:column;}
+.chat-head{background:#0a3d2e;color:white;padding:12px 16px;display:flex;align-items:center;gap:10px;}
+.chat-head-img{width:36px;height:36px;border-radius:50%;background:#f5a623;display:flex;align-items:center;justify-content:center;font-size:1.2rem;}
+.chat-head-info{flex:1;}
+.chat-head-name{font-size:.9rem;font-weight:700;}
+.chat-head-status{font-size:.72rem;color:rgba(255,255,255,.7);display:flex;align-items:center;gap:4px;}
+.online-dot{width:7px;height:7px;background:#25d366;border-radius:50%;display:inline-block;}
+.chat-msgs{height:220px;overflow-y:auto;padding:12px;background:#f0ebe3;display:flex;flex-direction:column;gap:8px;}
+.msg{max-width:80%;padding:8px 12px;border-radius:12px;font-size:.82rem;line-height:1.5;}
+.msg-bot{background:white;color:#1a1a1a;align-self:flex-start;border-bottom-left-radius:4px;}
+body.ur .msg-bot{border-bottom-left-radius:12px;border-bottom-right-radius:4px;align-self:flex-end;}
+.msg-user{background:#0a3d2e;color:white;align-self:flex-end;border-bottom-right-radius:4px;}
+body.ur .msg-user{border-bottom-right-radius:12px;border-bottom-left-radius:4px;align-self:flex-start;}
+.msg-time{font-size:.65rem;color:rgba(0,0,0,.4);margin-top:2px;}
+.typing{display:flex;gap:4px;padding:8px 12px;background:white;border-radius:12px;align-self:flex-start;width:fit-content;}
+body.ur .typing{align-self:flex-end;}
+.typing span{width:7px;height:7px;background:#aaa;border-radius:50%;animation:ty .8s infinite;}
+.typing span:nth-child(2){animation-delay:.15s;}.typing span:nth-child(3){animation-delay:.3s;}
+@keyframes ty{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.chat-input-wrap{padding:10px;background:white;display:flex;gap:8px;border-top:1px solid #eee;}
+.chat-input{flex:1;padding:8px 12px;border:2px solid #ddd;border-radius:50px;font-family:inherit;font-size:.82rem;outline:none;}
+body.ur .chat-input{direction:rtl;}body.en .chat-input{direction:ltr;}
+.chat-input:focus{border-color:#0a3d2e;}
+.chat-send{background:#0a3d2e;color:white;border:none;width:34px;height:34px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0;}
+.chat-send:hover{background:#f5a623;}
+.chat-wa-btn{width:100%;background:#25d366;color:white;border:none;padding:10px;font-family:inherit;font-size:.82rem;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:all .2s;}
+.chat-wa-btn:hover{background:#1da851;}
+</style>');
+
+// Load saved products
+try{
+  const sp=localStorage.getItem('rabbani_prods');
+  if(sp){const pp=JSON.parse(sp);if(pp&&pp.length>0){prods=pp;nid=Math.max(...pp.map(p=>p.id))+1;}}
+}catch(e){}
+// Load saved orders
+try{
+  const so=localStorage.getItem('rabbani_orders');
+  if(so){const oo=JSON.parse(so);if(oo&&oo.length>0){orders=oo;noid=Math.max(...oo.map(o=>o.id))+1;}}
+}catch(e){}
+sl('ur');
+</script>
+
+<!-- CHAT BOX -->
+<div class="chat-wrap">
+  <div class="chat-box" id="chatBox">
+    <div class="chat-head">
+      <div class="chat-head-img">🏪</div>
+      <div class="chat-head-info">
+        <div class="chat-head-name" id="chatName">ربانی اسٹور</div>
+        <div class="chat-head-status"><span class="online-dot"></span> <span id="chatStatus">آن لائن ہیں</span></div>
+      </div>
+      <button onclick="toggleChat()" style="background:transparent;border:none;color:white;font-size:1.1rem;cursor:pointer;">✕</button>
+    </div>
+    <div class="chat-msgs" id="chatMsgs"></div>
+    <div class="chat-input-wrap">
+      <input type="text" class="chat-input" id="chatInput" placeholder="میسج لکھیں..." onkeypress="handleKey(event)">
+      <button class="chat-send" onclick="sendMsg()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M2 21L23 12 2 3v7l15 2-15 2v7z"/></svg>
+      </button>
+    </div>
+    <button class="chat-wa-btn" onclick="openWAChat()">
+      <svg width="16" height="16" viewBox="0 0 32 32" fill="white"><path d="M16 .5C7.44.5.5 7.44.5 16c0 2.83.74 5.5 2.03 7.83L.5 31.5l7.87-2.06A15.44 15.44 0 0016 31.5C24.56 31.5 31.5 24.56 31.5 16S24.56.5 16 .5zm7.22 18.83c-.4-.2-2.34-1.15-2.7-1.28-.36-.13-.62-.2-.88.2s-1.01 1.28-1.24 1.54c-.23.27-.45.3-.84.1a10.54 10.54 0 01-3.1-1.91 11.6 11.6 0 01-2.15-2.67c-.22-.4 0-.6.17-.8.16-.17.36-.44.54-.67.18-.22.24-.38.36-.63.12-.26.06-.48-.03-.67-.1-.2-.88-2.12-1.2-2.9-.32-.77-.64-.66-.88-.67h-.75c-.26 0-.68.1-1.03.48-.36.38-1.36 1.33-1.36 3.24s1.4 3.76 1.59 4.02c.2.26 2.74 4.18 6.64 5.86.93.4 1.65.64 2.22.82.93.3 1.78.25 2.45.15.75-.11 2.34-.96 2.67-1.88.33-.93.33-1.72.23-1.88-.1-.17-.36-.27-.75-.47z"/></svg>
+      <span id="chatWABtn">واٹس ایپ پر جاری رکھیں</span>
+    </button>
+  </div>
+  <button class="chat-btn" onclick="toggleChat()">
+    <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
+  </button>
+</div>
+
+<script>
+// CHAT SYSTEM
+const autoReplies = {
+  ur: [
+    {q:['ہیلو','سلام','ہائی','آداب','السلام'], a:'وعلیکم السلام! ربانی اسٹور میں خوش آمدید 😊 میں آپ کی کیا مدد کر سکتا ہوں؟'},
+    {q:['قیمت','ریٹ','کتنے کا','مہنگا','سستا'], a:'ہماری تمام اشیاء کی قیمتیں ویب سائٹ پر موجود ہیں۔ کوئی خاص چیز جاننا ہو تو بتائیں 😊'},
+    {q:['ڈیلیوری','پہنچانا','بھیجنا','گھر'], a:'جی! ہم کراچی کے تمام علاقوں میں ڈیلیوری کرتے ہیں۔ ڈیلیوری چارج صرف ₨150 ہے اور ₨3000 سے اوپر مفت! 🚚'},
+    {q:['آرڈر','خریدنا','آرڈر کرنا'], a:'آرڈر کرنے کے لیے اوپر "کارٹ" میں اشیاء شامل کریں اور واٹس ایپ پر آرڈر کریں ✅'},
+    {q:['وقت','کب','کتنا وقت','کب آئے گا'], a:'آرڈر کے بعد 2 سے 4 گھنٹے میں ڈیلیوری ہو جاتی ہے ⏰'},
+    {q:['واٹس','واٹس ایپ','نمبر','رابطہ'], a:'ہمارا واٹس ایپ نمبر ہے: 03077153554 📱 نیچے بٹن سے سیدھے بات کریں!'},
+    {q:['شکریہ','شکریہ جی','ٹھیک ہے'], a:'شکریہ آپ کا! کوئی اور مدد چاہیے تو بتائیں 😊'},
+  ],
+  en: [
+    {q:['hello','hi','hey','assalam','salaam'], a:'Hello! Welcome to Rabbani Store 😊 How can I help you?'},
+    {q:['price','rate','cost','how much','cheap'], a:'All product prices are listed on the website. Need info about a specific item? Ask away 😊'},
+    {q:['delivery','ship','send','home'], a:'We deliver to all areas of Karachi! Delivery charge is only ₨150, and FREE on orders above ₨3000 🚚'},
+    {q:['order','buy','purchase'], a:'Add items to cart and click "Order on WhatsApp" to place your order ✅'},
+    {q:['time','when','how long'], a:'Delivery takes 2-4 hours after your order ⏰'},
+    {q:['whatsapp','number','contact'], a:'Our WhatsApp: 03077153554 📱 Click the button below to chat directly!'},
+    {q:['thanks','thank you','okay','ok'], a:'Thank you! Let me know if you need anything else 😊'},
+  ]
+};
+
+let chatOpen = false;
+let chatStarted = false;
+let userMsgs = [];
+
+function toggleChat(){
+  chatOpen = !chatOpen;
+  const box = document.getElementById('chatBox');
+  box.classList.toggle('open', chatOpen);
+  if(chatOpen && !chatStarted){
+    chatStarted = true;
+    setTimeout(()=>addBotMsg(lg==='en'?'Hello! Welcome to Rabbani Store 😊':'السلام علیکم! ربانی اسٹور میں خوش آمدید 😊'), 500);
+    setTimeout(()=>addBotMsg(lg==='en'?'How can I help you today?':'آج میں آپ کی کیا مدد کر سکتا ہوں؟'), 1200);
+  }
+  updateChatLang();
+}
+
+function updateChatLang(){
+  document.getElementById('chatName').textContent = lg==='en'?'Rabbani Store':'ربانی اسٹور';
+  document.getElementById('chatStatus').textContent = lg==='en'?'Online Now':'آن لائن ہیں';
+  document.getElementById('chatInput').placeholder = lg==='en'?'Type a message...':'میسج لکھیں...';
+  document.getElementById('chatWABtn').textContent = lg==='en'?'Continue on WhatsApp':'واٹس ایپ پر جاری رکھیں';
+}
+
+function addBotMsg(text){
+  const msgs = document.getElementById('chatMsgs');
+  const typing = document.createElement('div');
+  typing.className = 'typing';
+  typing.innerHTML = '<span></span><span></span><span></span>';
+  msgs.appendChild(typing);
+  msgs.scrollTop = msgs.scrollHeight;
+  setTimeout(()=>{
+    msgs.removeChild(typing);
+    const msg = document.createElement('div');
+    msg.className = 'msg msg-bot';
+    const now = new Date();
+    msg.innerHTML = `${text}<div class="msg-time">${now.getHours()}:${String(now.getMinutes()).padStart(2,'0')}</div>`;
+    msgs.appendChild(msg);
+    msgs.scrollTop = msgs.scrollHeight;
+  }, 800);
+}
+
+function addUserMsg(text){
+  const msgs = document.getElementById('chatMsgs');
+  const msg = document.createElement('div');
+  msg.className = 'msg msg-user';
+  const now = new Date();
+  msg.innerHTML = `${text}<div class="msg-time" style="color:rgba(255,255,255,.6)">${now.getHours()}:${String(now.getMinutes()).padStart(2,'0')}</div>`;
+  msgs.appendChild(msg);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function getAutoReply(text){
+  const replies = autoReplies[lg] || autoReplies.ur;
+  const lower = text.toLowerCase();
+  for(const r of replies){
+    if(r.q.some(k=>lower.includes(k))) return r.a;
+  }
+  return lg==='en'
+    ? 'Thanks for your message! For quick help, please contact us on WhatsApp 📱'
+    : 'آپ کا شکریہ! فوری مدد کے لیے واٹس ایپ پر رابطہ کریں 📱';
+}
+
+function sendMsg(){
+  const input = document.getElementById('chatInput');
+  const text = input.value.trim();
+  if(!text) return;
+  addUserMsg(text);
+  userMsgs.push(text);
+  input.value = '';
+  setTimeout(()=>addBotMsg(getAutoReply(text)), 300);
+}
+
+function handleKey(e){
+  if(e.key==='Enter') sendMsg();
+}
+
+function openWAChat(){
+  const history = userMsgs.join(' | ');
+  const msg = lg==='en'
+    ? `Hello Rabbani Store! I was chatting on your website. My query: ${history || 'I need help'}`
+    : `السلام علیکم ربانی اسٹور! میں آپ کی ویب سائٹ پر چیٹ کر رہا تھا۔ میرا سوال: ${history || 'مجھے مدد چاہیے'}`;
+  window.open(`https://wa.me/923077153554?text=${encodeURIComponent(msg)}`,'_blank');
+}
+</script>
+</body>
+</html>
